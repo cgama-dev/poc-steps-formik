@@ -2,7 +2,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { PersonInformationSchema } from '../../schemas'
 
   export const PersonInformation = (props)=> {
-    
     const handleValidatePersonInformation = (values)=>{
       props.next(values);
     }

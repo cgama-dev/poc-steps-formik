@@ -1,11 +1,11 @@
 import { useState } from 'react';
 export const Wizard = (props)=> {
-    const [data, setData] = useState(props.initialData);
+    const [data, setData] = useState(props.data);
     const [current, setCurrent] = useState(0);
     const handleNextStep = (newState, final)=> {
       setData((state)=> ({...state, ...newState}));
       if(final){
-        setCurrent(0)
+        console.log(newState)
         return;
       }
       setCurrent((data) => data + 1);
@@ -16,7 +16,7 @@ export const Wizard = (props)=> {
       setCurrent((data)=> data - 1);
     }
   
-    const steps = [...props.initStepsComponents(handleNextStep, handleGoBackStep, data)];
+    const steps = [...props.steps(handleNextStep, handleGoBackStep, data)];
     return (
         <section>{steps[current]}</section>
     )
