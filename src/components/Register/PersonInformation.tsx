@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { PersonInformationSchema } from '../../schemas'
-import { WizardStepProps } from '../Wizard'
+import { WizardStepProps } from '../Wizard/contracts'
 
 export const PersonInformation: React.FC<WizardStepProps> = (props: WizardStepProps) => {
   const handleValidatePersonInformation = (values: any) => {

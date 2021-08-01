@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { PersonAuthSchema } from '../../schemas'
-import { WizardStepProps } from '../Wizard'
+import { WizardStepProps } from '../Wizard/contracts'
 
 export const PersonAuth: React.FC<WizardStepProps> = (props: WizardStepProps) => {
   // TODO: Configurar last step
