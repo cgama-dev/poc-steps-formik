@@ -1,12 +1,14 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { PersonInformationSchema } from '../../schemas'
+import { WizardStepProps } from '../Wizard'
 
-  export const PersonInformation = (props)=> {
-    const handleValidatePersonInformation = (values)=>{
-      props.next(values);
-    }
-    
-    return (
+export const PersonInformation: React.FC<WizardStepProps> = (props: WizardStepProps) => {
+  const handleValidatePersonInformation = (values: any) => {
+    props.next(values)
+  }
+  return (
+    <>
       <Formik
         validationSchema={PersonInformationSchema}
         initialValues={props.data}
@@ -17,7 +19,7 @@ import { PersonInformationSchema } from '../../schemas'
             <p>Nome</p>
             <Field name="name" />
             <ErrorMessage name="name" />
-  
+
             <p>Data de Nascimento</p>
             <Field name="birthday" />
             <ErrorMessage name="birthday" />
@@ -25,10 +27,11 @@ import { PersonInformationSchema } from '../../schemas'
             <p>Documento</p>
             <Field name="cpf" />
             <ErrorMessage name="cpf" />
-  
+
             <button type="submit">Próximo</button>
           </Form>
         )}
       </Formik>
-    );
-  }
+      </>
+  )
+}

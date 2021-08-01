@@ -1,19 +1,21 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { PersonAuthSchema } from '../../schemas';
+import React from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { PersonAuthSchema } from '../../schemas'
+import { WizardStepProps } from '../Wizard'
 
-export const PersonAuth = (props)=> {
-    // TODO: Configurar last step
-    const handleValidatePersonAuth =  (values)=>{
-      props.next(values, true);
-    }
-    return (
+export const PersonAuth: React.FC<WizardStepProps> = (props: WizardStepProps) => {
+  // TODO: Configurar last step
+  const handleValidatePersonAuth = (values) => {
+    props.next(values, true)
+  }
+  return (
       <>
         <Formik
           validationSchema={PersonAuthSchema}
           initialValues={props.data}
           onSubmit={handleValidatePersonAuth}
         >
-          {({values})=>(
+          {({ values }) => (
             <Form>
               <p>Email</p>
               <Field name="email" />
@@ -25,10 +27,10 @@ export const PersonAuth = (props)=> {
               <Field type="password" name="passwordConfirmation" />
               <ErrorMessage name="passwordConfirmation" />
               <button type="submit">Finalizar</button>
-              <button type="button" onClick={()=> props.back(values)}>Back</button>
+              <button type="button" onClick={() => props.back(values)}>Back</button>
             </Form>
           )}
         </Formik>
       </>
-    );
-  }
+  )
+}

@@ -1,17 +1,19 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { PersonAddressSchema } from '../../schemas';
+import React from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { PersonAddressSchema } from '../../schemas'
+import { WizardStepProps } from '../Wizard'
 
-export const PersonAddress = (props)=> {
-    const handleValidatePersonAddress = (values)=>{
-      props.next(values);
-    }
-    return (
+export const PersonAddress: React.FC<WizardStepProps> = (props: WizardStepProps) => {
+  const handleValidatePersonAddress = (values) => {
+    props.next(values)
+  }
+  return (
       <Formik
         validationSchema={PersonAddressSchema}
         initialValues={props.data}
         onSubmit={handleValidatePersonAddress}
       >
-        {({values})=> (
+        {({ values }) => (
            <Form>
             <p>Cep</p>
             <Field name="cep" />
@@ -23,9 +25,9 @@ export const PersonAddress = (props)=> {
             <Field name="city" />
             <ErrorMessage name="city" />
             <button type="submit">Próximo</button>
-            <button type="button" onClick={()=> props.back(values)}>Voltar</button>
+            <button type="button" onClick={() => props.back(values)}>Voltar</button>
           </Form>
         )}
     </Formik>
-    );
-  } 
+  )
+}
